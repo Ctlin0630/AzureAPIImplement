@@ -42,7 +42,7 @@ class AzureApi{
 
     public function SetEndpointType( $type ) {
 
-        $azureInfo = Misc_Class::define_mgmt_setting();
+        $azureInfo = define_mgmt_setting();
 
         $this->ControlUrl  = $azureInfo->$type->Auzre_ControlUrl;
         $this->LoginUrl    = $azureInfo->$type->Auzre_LoginUrl;
@@ -112,6 +112,7 @@ class AzureApi{
     }
 
     public function DefaultConfig( $TENANT_ID, $SUBSCRIPTION_ID, $CLIENT_ID, $CLIENT_SECRET) {
+
         $this->SetSubscriptionId( $SUBSCRIPTION_ID );
 		//$this->SetUserName( $USER_NAME );
 		//$this->SetPassword( $PASSWORD );
