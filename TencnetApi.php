@@ -665,6 +665,33 @@ class TencentApi{
         }
 
     }
+
+    public function testGetBucketACL(){
+        try {
+            $this->cosClient->createBucket(array('Bucket' => 'testbucket'));
+            sleep(5);
+            $this->cosClient->PutBucketAcl(array(
+                'Bucket' => 'testbucket',
+                'Grants' => array(
+                    array(
+                        'Grantee' => array(
+                            'DisplayName' => 'qcs::cam::uin/327874225:uin/327874225',
+                            'ID' => 'qcs::cam::uin/327874225:uin/327874225',
+                            'Type' => 'CanonicalUser',
+                        ),
+                        'Permission' => 'FULL_CONTROL',
+                    ),
+                // ... repeated
+                ),
+                'Owner' => array(
+                    'DisplayName' => 'qcs::cam::uin/3210232098:uin/3210232098',
+                    'ID' => 'qcs::cam::uin/3210232098:uin/3210232098',
+                ),));
+
+        } catch (\Exception $e) {
+            $this->assertFalse(true, $e);
+        }
+    }
 }
 
 ?>
