@@ -21,5 +21,5 @@ include_once 'Azure_Model.php';
     $r = $AzureClient->ListSubscription();
     print_r(json_encode( $r) );
     exit;
-//test m1
+//test b1
 ?>
